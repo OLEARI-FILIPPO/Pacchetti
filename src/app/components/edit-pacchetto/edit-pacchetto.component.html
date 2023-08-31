@@ -1,0 +1,22 @@
+<div *ngIf="pacchetto">
+     <h2>{{ pacchetto.nome }}</h2>
+     <div>
+       Name:
+       <input [(ngModel)]="pacchetto.nome" placeholder="Name" />
+     </div>
+     <div>
+       Descrizione:
+       <input [(ngModel)]="pacchetto.descrizione" placeholder="descrizione" />
+     </div>
+     <div>
+       Prezzo:
+       <input [(ngModel)]="pacchetto.prezzo" placeholder="prezzo" />
+     </div>
+     <div>
+       Sconto:
+       <input [(ngModel)]="pacchetto.sconto" placeholder="sconto" />
+     </div>
+     <button (click)="updatePacchetto(pacchetto)" *ngIf="pacchetto.id">Save</button>
+     <button (click)="deletePacchetto(pacchetto)" *ngIf="pacchetto.id">Delete</button>
+     <button (click)="createPacchetto(pacchetto)" *ngIf="!pacchetto.id">Create</button>
+   </div>
