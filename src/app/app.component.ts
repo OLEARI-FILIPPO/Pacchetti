@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Pacchetto } from './models/pacchetto';
 import { PacchettoService } from './services/pacchetto.service';
+import { Caldaia } from './models/caldaia';
+import { CaldaiaService } from './services/caldaia.service';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +14,20 @@ export class AppComponent {
   pacchetti: Pacchetto[] = []
   pacchettoToEdit?: Pacchetto
 
-  constructor(private pacchettoService: PacchettoService){  }
+  caldaie: Caldaia[] = []
+  caldaiaToEdit?: Caldaia
+
+  constructor(private pacchettoService: PacchettoService, private caldaiaService: CaldaiaService){  }
 
   ngOnInit(): void{
     //this.pacchetti = this.pacchettoService.getPacchetti();
-    this.pacchettoService.getPacchetti()
-    .subscribe((result: Pacchetto[]) => (this.pacchetti = result))
+    //this.pacchettoService.getPacchetti()
+    //.subscribe((result: Pacchetto[]) => (this.pacchetti = result))
 
-    console.log(this.pacchetti)
+    this.caldaiaService.getCaldaie()
+    .subscribe((result: Caldaia[]) => (this.caldaie = result))
+
+    console.log(this.caldaie)
   }
 
   initNewPacchetto(){
@@ -28,5 +36,17 @@ export class AppComponent {
 
   editPacchetto(pacchetto: Pacchetto){
     this.pacchettoToEdit = pacchetto
+  }
+
+  initNewCaldaia(){
+    this.caldaiaToEdit = new Caldaia();
+  }
+
+  editCaldaia(caldaia: Caldaia){
+    this.caldaiaToEdit = caldaia
+  }
+
+  updateCaldaieList(caldaie: Caldaia[]){
+    this.caldaie = caldaie
   }
 }

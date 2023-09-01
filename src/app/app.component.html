@@ -1,4 +1,4 @@
-<button (click)="initNewPacchetto()"> Crea un nuovo pacchetto </button>
+<button (click)="initNewCaldaia()"> Crea una nuova Caldaia </button>
 
 <table>
      <thead>
@@ -8,14 +8,15 @@
           <th>Sconto</th>
      </thead>
      <tbody>
-          <tr *ngFor="let pacchetto of pacchetti">
-               <td>{{ pacchetto.nome }}</td>
-               <td>{{ pacchetto.descrizione }}</td>
-               <td>{{ pacchetto.prezzo }}</td>
-               <td>{{ pacchetto.sconto }}</td>
-               <td><button (click)="editPacchetto(pacchetto)">Edit</button></td>
+          <tr *ngFor="let caldaia of caldaie">
+               <td>{{ caldaia.nome }}</td>
+               <td>{{ caldaia.descrizione }}</td>
+               <td>{{ caldaia.prezzo }}</td>
+               <td>{{ caldaia.sconto }}</td>
+               <td><button (click)="editCaldaia(caldaia)">Edit</button></td>
           </tr>
      </tbody>
 </table>
 
+<app-edit-caldaia [caldaia]="caldaiaToEdit" (caldaiaUpdated)="updateCaldaieList($event)"></app-edit-caldaia>
 <app-edit-pacchetto [pacchetto]="pacchettoToEdit"></app-edit-pacchetto>
